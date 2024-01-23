@@ -1,11 +1,22 @@
-# Vue 3 + Vite
+# 帕鲁服务器配置生成工具
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
 ## 预览地址
 
 - [https://pal-world-server-config.vercel.app/](https://pal-world-server-config.vercel.app/)
+
+生成之后复制到对应的ini，替换内容。
+
+配置文件位置
+
+这些文件将在服务器启动一次后才会生成。
+
+Windows - Steam，SteamCMD
+
+steamapps/common/PalServer/Pal/Saved/Config/WindowsServer/PalWorldSettings.ini
+
+Linux - SteamCMD
+
+steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
+
+

@@ -1,32 +1,31 @@
 <template>
   <el-container>
-      <div class="config-form">
-        <h2>PalWorld INI配置文件生成器</h2>
-        <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column prop="key" label="字段" width="180">
-          </el-table-column>
-          <el-table-column prop="value" label="内容" width="320">
-            <template #default="scope">
-              <input
-                type="text"
-                v-model="scope.row.value"
-                class="ipt"
-                style="width: 300px; text-align: center"
-                @blur="iptBlur(scope.row, $event)"
-              />
-            </template>
-          </el-table-column>
-          <el-table-column prop="label" label="描述" />
-        </el-table>
-         <!-- 显示生成的INI配置 -->
-         <el-input
-          v-model="iniContent"
-          :autosize="{ minRows: 20, maxRows: 40 }"
-          type="textarea"
-          placeholder="配置文件"
-          style="margin-top: 20px;"
-        />
-      </div>
+    <div class="config-form">
+      <h2>PalWorld INI配置文件生成器</h2>
+      <el-table :data="tableData" stripe style="width: 100%">
+        <el-table-column prop="key" label="字段" width="180"> </el-table-column>
+        <el-table-column prop="value" label="内容" width="320">
+          <template #default="scope">
+            <input
+              type="text"
+              v-model="scope.row.value"
+              class="ipt"
+              style="width: 300px; text-align: center"
+              @blur="iptBlur(scope.row, $event)"
+            />
+          </template>
+        </el-table-column>
+        <el-table-column prop="label" label="描述" />
+      </el-table>
+      <!-- 显示生成的INI配置 -->
+      <el-input
+        v-model="iniContent"
+        :autosize="{ minRows: 20, maxRows: 40 }"
+        type="textarea"
+        placeholder="配置文件"
+        style="margin-top: 20px"
+      />
+    </div>
   </el-container>
 </template>
 
@@ -35,82 +34,82 @@ import { ref } from "vue";
 const tableData = ref([]);
 const config = ref({});
 const miaoshu = ref({
-  AdminPassword: "伺服器管理員密碼",
-  AutoResetGuildTimeNoOnlinePlayers: "預設：72(h)\n自動幫玩家退出公會的時間",
-  bActiveUNKO: "預設：False\n謎之UNKO事件關閉開啟 (True/False)",
-  BanListURL: "封鎖名單 (目前來自官方)",
-  BaseCampMaxNum: "基地最大數量",
-  BaseCampWorkerMaxNum: "基地內工作帕魯的最大數量",
+  AdminPassword: "服务器管理员密码",
+  AutoResetGuildTimeNoOnlinePlayers: "默认：72(h)\n自动帮玩家退出公会的时间",
+  bActiveUNKO: "默认：False\n神秘的UNKO事件关闭开启 (True/False)",
+  BanListURL: "封锁名单 (目前来自官方)",
+  BaseCampMaxNum: "基地最大数量",
+  BaseCampWorkerMaxNum: "基地内工作帕鲁的最大数量",
   bAutoResetGuildNoOnlinePlayers:
-    "預設：False\n自動幫玩家退出公會 (True/False)",
+    "默认：False\n自动帮玩家退出公会 (True/False)",
   bCanPickupOtherGuildDeathPenaltyDrop:
-    "預設：False\n[推薦用於PVP] 是否撿取其他公會的死亡掉落物 (True/False)",
-  bEnableAimAssistKeyboard: "預設：False\n鍵鼠輔助瞄準 (True/False)",
-  bEnableAimAssistPad: "預設：False\n手把輔助瞄準 (True/False)",
+    "默认：False\n[推荐用于PVP] 是否捡取其他公会的死亡掉落物 (True/False)",
+  bEnableAimAssistKeyboard: "默认：False\n键鼠辅助瞄准 (True/False)",
+  bEnableAimAssistPad: "默认：False\n手把辅助瞄准 (True/False)",
   bEnableDefenseOtherGuildPlayer:
-    "預設: False\n[推薦用於PVP] 是否受到其他公會傷害 (True/False)",
-  bEnableFastTravel: "預設：True\n是否開啟快速旅行 (True/False)",
+    "默认: False\n[推荐用于PVP] 是否受到其他公会伤害 (True/False)",
+  bEnableFastTravel: "默认：True\n是否开启快速旅行 (True/False)",
   bEnableFriendlyFire:
-    "預設: False\n[推薦用於PVP] 玩家對自己帕魯跟同公會玩家的傷害 (True/False)",
-  bEnableInvaderEnemy: "預設: True\n襲擊事件關閉開啟 (True/False)",
+    "默认: False\n[推荐用于PVP] 玩家对自己帕鲁跟同公会玩家的伤害 (True/False)",
+  bEnableInvaderEnemy: "默认: True\n袭击事件关闭开启 (True/False)",
   bEnableNonLoginPenalty:
-    "預設：False\n[推薦用於PVP] 登入懲罰 (True/False) [未知作用]",
+    "默认：False\n[推荐用于PVP] 登录惩罚 (True/False) [未知作用]",
   bEnablePlayerToPlayerDamage:
-    "預設: False\n[推薦用於PVP] 玩家對玩家傷害 (True/False)",
-  bExistPlayerAfterLogout: "預設: False\n是否玩家全部登出自動關服 (True/False)",
-  bIsMultiplay: "預設: False\n未知作用 (True/False)",
-  bIsPvP: "預設: False\n[推薦用於PVP] 多人遊戲與PVP模式 (True/False)",
+    "默认: False\n[推荐用于PVP] 玩家对玩家伤害 (True/False)",
+  bExistPlayerAfterLogout: "默认: False\n是否玩家全部登出自动关服 (True/False)",
+  bIsMultiplay: "默认: False\n未知作用 (True/False)",
+  bIsPvP: "默认: False\n[推荐用于PVP] 多人游戏与PVP模式 (True/False)",
   bIsStartLocationSelectByMap:
-    "預設: True\n是否創角後選擇出生點 (True/False)\nPS: 若為關則出生在初始台地，死亡後依舊可以選擇其他出生點",
-  BuildObjectDamageRate: "預設：1\n建築受傷害倍率 (0.5 - 3)",
-  BuildObjectDeteriorationDamageRate: "預設：1\n建築劣化速率 (0 - 10)",
-  bUseAuth: "是否使用授權 (作用未知)/nPS: 應該是向官方驗證的服務",
+    "默认: True\n是否创角后选择出生点 (True/False)\nPS: 若为关则出生在初始台地，死亡后依旧可以选择其他出生点",
+  BuildObjectDamageRate: "默认：1\n建筑受伤害倍率 (0.5 - 3)",
+  BuildObjectDeteriorationDamageRate: "默认：1\n建筑劣化速率 (0 - 10)",
+  bUseAuth: "是否使用授权 (作用未知)/nPS: 应该是向官方验证的服务",
   CollectionDropRate:
-    "預設：1\n採集資源被率\n例 : 拿石稿敲小帕魯礦取得1個帕魯碎片預設要6下平均19點傷害，若調為3則要敲2下平均19點傷害。",
+    "默认：1\n采集资源倍率\n例 : 拿石稿敲小帕鲁矿取得1个帕鲁碎片默认要6下平均19点伤害，若调为3则要敲2下平均19点伤害。",
   CollectionObjectHpRate:
-    "預設：1\n採集資源生命倍率 (0.5 - 3)\nPS: 經敲小帕魯礦，測試不生效",
+    "默认：1\n采集资源生命倍率 (0.5 - 3)\nPS: 经敲小帕鲁矿，测试不生效",
   CollectionObjectRespawnSpeedRate:
-    "預設：1\n採集資源重生間格 (0；0.5 - 3)\nPS: 樹木大礦石為1小時，若為0立即重生",
-  CoopPlayerMaxNum: "合作玩家人數",
-  DayTimeSpeedRate: "預設：1\n白天速度 (0.1 - 5)",
+    "默认：1\n采集资源重生间隔 (0；0.5 - 3)\nPS: 树木大矿石为1小时，若为0立即重生",
+  CoopPlayerMaxNum: "合作玩家人数",
+  DayTimeSpeedRate: "默认：1\n白天速度 (0.1 - 5)",
   DeathPenalty:
-    "死亡懲罰\nNone: 全部不掉落\nItem: 僅掉落道具(不含帕魯及身上穿的裝備武器)\nItemAndEquipment: 除了帕魯其他全掉\nAll: 帕魯、裝備、道具全部掉落(不包含無法掉落的帕魯專屬裝備，如馬鞍)",
-  Difficulty: "預設：None\n即使使用Difficult或是Easy也不影響下列調整的參數",
+    "死亡惩罚\nNone: 全部不掉落\nItem: 仅掉落道具(不含帕鲁及身上穿的装备武器)\nItemAndEquipment: 除了帕鲁其他全掉\nAll: 帕鲁、装备、道具全部掉落(不包含无法掉落的帕鲁专属装备，如马鞍)",
+  Difficulty: "默认：None\n即使使用Difficult或是Easy也不影响下列调整的参数",
   DropItemAliveMaxHours:
-    "預設：1(h)\n掉落物品的保留時間\nPS: 建議設為0.5以保證掉落物不會太多造成卡頓",
-  DropItemMaxNum: "世界內的掉落物上限",
-  DropItemMaxNum_UNKO: "謎之UNKO掉落物上限",
-  EnemyDropItemRate: "預設：1\n敵人掉落倍率",
-  ExpRate: "預設：1\n經驗倍率",
-  GuildPlayerMaxNum: "公會人數上限",
-  NightTimeSpeedRate: "預設：1\n夜晚速度 (0.1 - 5)",
-  PalAutoHPRegeneRate: "預設：1\n帕魯的自動生命回復速率",
-  PalAutoHpRegeneRateInSleep: "預設：1\n帕魯睡眠中的生命回復倍率 (在帕魯箱中)",
+    "默认：1(h)\n掉落物品的保留时间\nPS: 建议设为0.5以保证掉落物不会太多造成卡顿",
+  DropItemMaxNum: "世界内的掉落物上限",
+  DropItemMaxNum_UNKO: "神秘UNKO掉落物上限",
+  EnemyDropItemRate: "默认：1\n敌人掉落倍率",
+  ExpRate: "默认：1\n经验倍率",
+  GuildPlayerMaxNum: "公会人数上限",
+  NightTimeSpeedRate: "默认：1\n夜晚速度 (0.1 - 5)",
+  PalAutoHPRegeneRate: "默认：1\n帕鲁的自动生命回复速率",
+  PalAutoHpRegeneRateInSleep: "默认：1\n帕鲁睡眠中的生命回复倍率 (在帕鲁箱中)",
   PalCaptureRate:
-    "預設：1\n帕魯抓捕機率 (0.5 - 2)\nPS: 這個參數調整非常敏感請謹慎調整。困難模式為0.8，簡單模式為2",
-  PalDamageRateAttack: "預設：1\n帕魯造成的傷害倍率",
-  PalDamageRateDefense: "預設：1\n帕魯受到的傷害倍率",
-  PalEggDefaultHatchingTime: "預設：1(h)\n巨大蛋的孵化時間",
+    "默认：1\n帕鲁抓捕机率 (0.5 - 2)\nPS: 这个参数调整非常敏感请谨慎调整。困难模式为0.8，简单模式为2",
+  PalDamageRateAttack: "默认：1\n帕鲁造成的伤害倍率",
+  PalDamageRateDefense: "默认：1\n帕鲁受到的伤害倍率",
+  PalEggDefaultHatchingTime: "默认：1(h)\n巨大蛋的孵化时间",
   PalSpawnNumRate:
-    "預設：1\n帕魯的重生數量\n若調整為2，王固定變2隻，野生帕魯群2~4隻\nPS: 超過3會經常導致帕魯重疊或掉出地圖，請謹慎調整。",
-  PalStaminaDecreaceRate: "預設：1\n帕魯的耐力條下降速度 (0.1 - 5)",
-  PalStomachDecreaceRate: "預設：1\n帕魯的飽足感下降速度 (0.1 - 5)",
-  PlayerAutoHPRegeneRate: "預設：1\n玩家的自動生命回復速率",
-  PlayerAutoHpRegeneRateInSleep: "預設：1\n玩家睡眠中的生命回復倍率",
-  PlayerDamageRateAttack: "預設：1\n玩家造成的傷害倍率 (0.1 - 5)",
-  PlayerDamageRateDefense: "預設：1\n玩家受到的傷害倍率 (0.1 - 5)",
-  PlayerStaminaDecreaceRate: "預設：1\n玩家的耐力條下降速度 (0.1 - 5)",
-  PlayerStomachDecreaceRate: "預設：1\n玩家的飽足感下降速度 (0.1 - 5)",
-  PublicIP: "主機位置",
-  PublicPort: "主機端口",
-  RCONEnabled: "RCON 使用或關閉",
+    "默认：1\n帕鲁的重生数量\n若调整为2，王固定变2只，野生帕鲁群2~4只\nPS: 超过3会经常导致帕鲁重叠或掉出地图，请谨慎调整。",
+  PalStaminaDecreaceRate: "默认：1\n帕鲁的耐力条下降速度 (0.1 - 5)",
+  PalStomachDecreaceRate: "默认：1\n帕鲁的饱足感下降速度 (0.1 - 5)",
+  PlayerAutoHPRegeneRate: "默认：1\n玩家的自动生命回复速率",
+  PlayerAutoHpRegeneRateInSleep: "默认：1\n玩家睡眠中的生命回复倍率",
+  PlayerDamageRateAttack: "默认：1\n玩家造成的伤害倍率 (0.1 - 5)",
+  PlayerDamageRateDefense: "默认：1\n玩家受到的伤害倍率 (0.1 - 5)",
+  PlayerStaminaDecreaceRate: "默认：1\n玩家的耐力条下降速度 (0.1 - 5)",
+  PlayerStomachDecreaceRate: "默认：1\n玩家的饱足感下降速度 (0.1 - 5)",
+  PublicIP: "主机位置",
+  PublicPort: "主机端口",
+  RCONEnabled: "RCON 使用或关闭",
   RCONPort: "RCON 端口",
-  Region: "地區 (目前未知可能後期可以分國家)",
-  ServerDescription: "伺服器簡介",
-  ServerName: "伺服器名稱",
-  ServerPassword: "伺服器密碼 (需等待官方更新耐久耐久修復)",
-  ServerPlayerMaxNum: "伺服器最大人數",
-  WorkSpeedRate: "預設：1\n工作效率",
+  Region: "地区 (目前未知可能后期可以分国家)",
+  ServerDescription: "服务器简介",
+  ServerName: "服务器名称",
+  ServerPassword: "服务器密码 (需等待官方更新耐久耐久修复)",
+  ServerPlayerMaxNum: "服务器最大人数",
+  WorkSpeedRate: "默认：1\n工作效率",
 });
 const iniContent = ref("");
 // make table
