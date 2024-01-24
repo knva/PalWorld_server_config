@@ -74,8 +74,8 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-const tableData = ref([]);
+import {ref ,watch} from "vue";
+const tableData =ref([]);
 const config = ref({});
 const miaoshu = ref([
   { name: "AdminPassword", label: "服务器管理员密码", type: "string" },
@@ -481,9 +481,12 @@ document.onkeydown = function (e) {
   }
 }
 makeForm();
-setInterval(() => {
+
+//watch tabledata.value
+watch(tableData, (newVal, oldVal) => {
   generateIni();
-}, 100);
+},{deep:true,immediate:true});
+
 </script>
 
 <style scoped>
