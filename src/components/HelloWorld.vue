@@ -75,7 +75,6 @@
 
 <script setup>
 import { ref } from "vue";
-import { ElMessage, ElMessageBox } from "element-plus";
 const tableData = ref([]);
 const config = ref({});
 const miaoshu = ref([
