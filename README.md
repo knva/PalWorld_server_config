@@ -5,6 +5,9 @@
 
 - [https://pal-world-server-config.vercel.app/](https://pal-world-server-config.vercel.app/)
 
+
+- [https://pal.438818.xyz](https://pal.438818.xyz)
+
 生成之后复制到对应的ini，替换内容。
 
 配置文件位置
