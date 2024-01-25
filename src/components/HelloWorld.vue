@@ -150,7 +150,7 @@ const miaoshu = ref([
   },
   {
     name: "bExistPlayerAfterLogout",
-    label: "默认: False\n是否玩家全部登出自动关服 (True/False)",
+    label: "默认: False\n 玩家登出是否留在原地（不消失） (True/False)",
     type: "bool",
   },
   {
